@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-4115: Default Credentials From Google Virtual Machines</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=68dc534c">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=68dc534c">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=68dc534c"></script>
+    
+<script type="text/javascript" src="/assets/js/syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://github.com/aip-dev/google.aip.dev" target="_blank" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/aip-dev/google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">GSuite</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/4110">
+        <span class="aip-number">4110</span>
+        Application Default Credentials
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4111">
+        <span class="aip-number">4111</span>
+        Self-signed JWT
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4112">
+        <span class="aip-number">4112</span>
+        Service Account Keys
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4113">
+        <span class="aip-number">4113</span>
+        gcloud CLI Integration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4114">
+        <span class="aip-number">4114</span>
+        Device Certificate Authentication via Mutual TLS
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/4115">
+        <span class="aip-number">4115</span>
+        Default Credentials From Google Virtual Machines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4116">
+        <span class="aip-number">4116</span>
+        Identity Tokens
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4117">
+        <span class="aip-number">4117</span>
+        External Account Credentials (Workload Identity Federation)
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4118">
+        <span class="aip-number">4118</span>
+        Mutual Authentication Using Workload Credentials
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/4119">
+        <span class="aip-number">4119</span>
+        mTLS Token Binding
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Default Credentials From Google Virtual Machines</th></tr>
+    <tr><td>Number</td><td>4115</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/auth/4115">google.aip.dev/auth/4115</a></td></tr>
+    <tr><td>Scope</td><td>Auth</td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2020-08-13</td></tr>
+    <tr><td>Updated</td><td>2020-08-13</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#application-default-credentials">Application Default Credentials</a></li>
+<li><a href="#google-virtual-machine-environments">Google Virtual Machine Environments</a></li>
+<li><a href="#compute-engine-or-equivalent-runtime">Compute Engine or Equivalent Runtime</a></li>
+<li><a href="#google-app-engine-standard-10-runtime">Google App Engine Standard 1.0 Runtime</a></li>
+<li><a href="#token-expiration">Token Expiration</a></li>
+</ul>
+</li>
+<li><a href="#changelog">Changelog</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/auth/4115.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/auth/4115.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/auth">
+          Auth AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Default Credentials From Google Virtual Machines
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-4115</h4>
+  <h1 id="default-credentials-from-google-virtual-machines">Default Credentials From Google Virtual Machines</h1>
+<p>If the client runs on Google virtual machine instance such as <a href="https://cloud.google.com/appengine">Google App
+Engine</a> or <a href="https://cloud.google.com/compute">Compute Engine</a>, the auth library <strong>may</strong> obtain the identity
+token that is associated with the instance, and use the identity token as the
+credential to access Google APIs. By using the instance identity, the users no
+longer need to config their credentials explicitly.</p>
+<p><strong>Note:</strong> Because this AIP describes guidance and requirements in a
+language-neutral way, it uses generic terminology which may be imprecise or
+inappropriate in certain languages or environments.</p>
+<h2 id="guidance">Guidance</h2>
+<p>This section describes the general guidance of supporting default credentials
+from Google virtual machine environments.</p>
+<h3 id="application-default-credentials">Application Default Credentials</h3>
+<p>Supporting the default credentials from Google virtual machines is considered as
+a part of the <a href="./4110">Application Default Credential</a>. To understand the overall
+credential flow, please read <a href="./4110">AIP-4110</a>.</p>
+<h3 id="google-virtual-machine-environments">Google Virtual Machine Environments</h3>
+<p>There are typically two types of Google virtual machine environments where the
+auth library should obtain the identity token based on the environment type:</p>
+<ul>
+<li>Google App Engine Standard 1.0 (aka 1st generation)</li>
+<li>Compute Engine <ul>
+<li>GCE equivalent runtimes<ul>
+<li>Google App Engine Standard 2.0+</li>
+<li>Google App Engine Flex</li>
+<li>Google Cloud Functions</li>
+<li>Cloud Run</li>
+<li>Workload Identity on Google Kubernetes Engine</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The auth library <strong>should</strong> depend on the <a href="https://cloud.google.com/appengine/downloads">Google App Engine SDK</a> or well 
+defined GAE environment variables to detect if the application is running within
+the 1st generation Google App Engine environment.</p>
+<p>To detect if the application is running on Compute Engine or an equivalent runtime,
+the auth library <strong>should</strong> depend on the <a href="https://developers.google.com/analytics/devguides/reporting/metadata/v3/libraries">Metadata Service Library</a>.</p>
+<h3 id="compute-engine-or-equivalent-runtime">Compute Engine or Equivalent Runtime</h3>
+<p>If the application runs on a Compute Engine instance (or equivalent runtime),
+the auth library can request the following URL to get an access token associated
+with instance:</p>
+<div class="highlight language-None"><pre><span></span><code>http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token
+</code></pre></div>
+<p>In response, the auth library will usually receive a token in the following JSON
+format:</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+      <span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="s2">&quot;YOUR_ACCESS_TOKEN&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="mi">3599</span><span class="p">,</span>
+      <span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="s2">&quot;Bearer&quot;</span>
+ <span class="p">}</span>
+</code></pre></div>
+<h4 id="scopes">Scopes</h4>
+<p>Access tokens obtained from the metadata server contain the scopes specified at instance creation.
+For example, if an instance is granted only the
+https://www.googleapis.com/auth/storage-full scope for Cloud Storage, then the tokens obtained 
+from the instance's metadata server have only the <code>storage-full</code> scope.</p>
+<p>When running on GCE, the metadata server ignores requests for custom scopes.
+On GCE equivalent runtimes, clients can request a different set of scopes to the metadata server
+using the <code>scopes</code> url parameter, e.g.:</p>
+<div class="highlight language-None"><pre><span></span><code>http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token?scopes=comma-separated-list-of-scopes
+</code></pre></div>
+<p>The auth library <strong>should</strong> allow the caller to optionally specify a list of custom scopes,
+and add the <code>scopes</code> parameter to the request when needed.
+Depending on the runtime environment, the request for custom scopes will be transparently
+ignored by the server (GCE) or fulfilled (GCE equivalent).</p>
+<h3 id="google-app-engine-standard-10-runtime">Google App Engine Standard 1.0 Runtime</h3>
+<p>If the application runs on a App Engine Standard 1st generation instance, the
+auth library <strong>should</strong> rely on the <a href="https://cloud.google.com/appengine/downloads">Google App Engine SDK</a> to retrieve the
+access token. Here is <a href="https://godoc.org/google.golang.org/appengine#AccessToken">one example</a> in Go. Essentially the SDK relies on the
+underlying App Engine Identity service to generate the token.</p>
+<p>Like GCE equivalent runtimes, the auth library can specify scopes when requesting the
+token in the App Engine Standard 1.0 runtime.</p>
+<p>Sample code of getting the access token in Go:</p>
+<div class="highlight language-go"><pre><span></span><code><span class="kn">import</span> <span class="s">&quot;google.golang.org/appengine&quot;</span>
+<span class="o">...</span>
+<span class="nx">token</span><span class="p">,</span> <span class="nx">exp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">appengine</span><span class="p">.</span><span class="nx">AccessToken</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">scopes</span><span class="o">...</span><span class="p">)</span>
+<span class="o">...</span>
+</code></pre></div>
+<h3 id="token-expiration">Token Expiration</h3>
+<p>The access tokens expire after a short period of time. The auth library <strong>must</strong>
+get a new token if the existing token expires.</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2020-12-14</strong>: Replace note on scopes with more detailed discussion.</li>
+<li><strong>2021-07-13</strong>: Clarify GCE equivalent runtimes</li>
+</ul>
+<!-- prettier-ignore-start -->
+<!-- prettier-ignore-end -->
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>
